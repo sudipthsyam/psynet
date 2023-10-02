@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'CodeNextBold'; /* A name for the font */
+    src: url('CodeNext-Trial-Bold.ttf') format('truetype'); /* Path to the .ttf font file */
+}
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'CodeNextBold', 'Arial', sans-serif; /* Use the custom font with fallbacks */
+    background-color: black;
+    color: white; /* Default color for all text elements */
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#typed-output {
+    color: white;
+    font-size: 34px; /* Default size for desktop */
+
+    /* Responsive font size for mobile screens */
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 16px;
+    }
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'CodeNextBold', 'Arial', sans-serif; /* Use the custom font with fallbacks */
+    background-color: black;
+}
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;  
+}
+
+body.background-image {
+    background: url('hari.jpg') no-repeat center center fixed;
+    background-size: cover; /* This ensures the image covers the entire viewport */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 1s; /* Smooth transition for the background change */
+}
