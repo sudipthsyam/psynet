@@ -18,7 +18,7 @@
 	<meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
 
     <!-- Webpage Title -->
-    <title>Psynet - Broadband Company</title>
+    <title>Psynet - Techy Company</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -99,7 +99,75 @@
     <!-- Home -->
     <section class="home py-5 d-flex align-items-center" id="header">
         <div class="container text-light py-5"  data-aos="fade-right"> 
-            <h1 class="headline">Best <span class="home_text">Broadband</span><br>Internet Plans For You</h1>
+            <div class="headline-container">
+                <h1 id="headline1" class="headline hidden">Psynet:Your Gateway to <br> Endless Solutions.</h1>
+                <h1 id="headline2" class="headline hidden">Optimal Connectivity Solutions for <br> Software Development and IoT Enterprises</h1>
+              </div>
+              <style>
+                .hidden {
+                  visibility: hidden;
+                }
+            
+                .headline-container {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: flex-start;
+                }
+            
+                .headline {
+                  margin: 0;
+                  line-height: 1.2;
+                  white-space: pre-line; /* Preserve line breaks */
+                }
+              </style>
+              <script>
+                var headline1 = document.getElementById('headline1');
+                var headline2 = document.getElementById('headline2');
+              
+                function typeAndBackspace(element, text) {
+                  return new Promise(resolve => {
+                    element.classList.remove('hidden');
+                    element.textContent = '';
+              
+                    setTimeout(() => {
+                      let index = 0;
+                      function type() {
+                        if (index < text.length) {
+                          element.textContent += text.charAt(index);
+                          index++;
+                          setTimeout(type, 100);
+                        } else {
+                          setTimeout(() => backspace(text.length - 1), 1000);
+                        }
+                      }
+              
+                      function backspace(index) {
+                        if (index >= 0) {
+                          element.textContent = text.substring(0, index);
+                          setTimeout(() => backspace(index - 1), 50);
+                        } else {
+                          resolve();
+                        }
+                      }
+              
+                      type();
+                    }, 1000); // Adjust the delay before typing starts
+                  });
+                }
+              
+                async function startLoop() {
+                  while (true) {
+                    await typeAndBackspace(headline1, "Psynet: Your Gateway to \nEndless Solutions.");
+                    headline1.classList.add('hidden'); // Hide the first headline before starting the second one
+                    await typeAndBackspace(headline2, "Optimal Connectivity Solutions for \nSoftware Development and IoT Enterprises");
+                    headline2.classList.add('hidden'); // Hide the second headline before starting the first one again
+                  }
+                }
+              
+                // Start the loop after a brief delay to show only the first headline initially
+                setTimeout(startLoop, 0);
+              
+              </script>
             <p class="para para-light py-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus tempore accusamus quis magnam doloremque itaque ad modi, pariatur iste labore similique officiis impedit aspernatur aperiam facere architecto. Eligendi, repellendus inventore!</p>
             <div class="d-flex align-items-center">
                 <p class="p-2"><i class="fas fa-laptop-house fa-lg"></i></p>
