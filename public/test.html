@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing and Backspacing</title>
+  <style>
+    .hidden {
+      visibility: hidden;
+    }
+
+    .headline-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    .headline {
+      margin: 0;
+      line-height: 1.2;
+      white-space: pre-line; /* Preserve line breaks */
+    }
+  </style>
+</head>
+<body>
+
+<div class="headline-container">
+  <h1 id="headline1" class="headline hidden"></h1>
+  <h1 id="headline2" class="headline hidden"></h1>
+</div>
+
+<script>
+  var headline1 = document.getElementById('headline1');
+  var headline2 = document.getElementById('headline2');
+
+  function typeAndBackspace(element, text) {
+    return new Promise(resolve => {
+      element.classList.remove('hidden');
+      element.textContent = text;
+
+      setTimeout(() => {
+        let index = text.length;
+        function backspace() {
+          if (index > 0) {
+            index--;
+            element.textContent = text.substring(0, index);
+            setTimeout(backspace, 50);
+          } else {
+            resolve();
+          }
+        }
+
+        setTimeout(() => backspace(), 1000); // Start backspacing after a brief delay
+      }, 0); // No delay before typing starts
+    });
+  }
+
+  async function startLoop() {
+    while (true) {
+      await typeAndBackspace(headline1, "<span class=\"home_text\">PsyNet:</span>Your Gateway to \nEndless Solutions.");
+      headline1.classList.add('hidden'); // Hide the first headline before starting the second one
+      await typeAndBackspace(headline2, "Optimal Connectivity Solutions for \nSoftware Development and IoT Enterprises");
+      headline2.classList.add('hidden'); // Hide the second headline before starting the first one again
+    }
+  }
+
+  // Start the loop after a brief delay to show only the first headline initially
+  setTimeout(startLoop, 0);
+
+</script>
+
+</body>
+</html>
